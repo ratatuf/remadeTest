@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test Jérémy Fautrat</title>
+    <!-- Bootsrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Additional font -->
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Test Jérémy Fautrat</h1>
+    <div id="container" class="row">
+      <div class="chatContainer col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <h2>Chat A</h2>
+        <div id="chatA" class="chat">
+        </div>
+        <div class="input-group">
+          <input id="inputA" type="text" class="form-control" placeholder="Tapez votre message ici.">
+          <span class="input-group-btn">
+            <button id="btnA" class="btn btn-primary" type="button">Envoyer</button>
+          </span>
+        </div>
+      </div>
+      <div class="chatContainer col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <h2>Chat B</h2>
+        <div id="chatB" class="chat">
+        </div>
+        <div class="input-group">
+          <input id="inputB" type="text" class="form-control" placeholder="Tapez votre message ici.">
+          <span class="input-group-btn">
+            <button id="btnB" class="btn btn-primary" type="button">Envoyer</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!-- Custom Javascript -->
+    <script type="text/javascript">
+      /* VARIABLES */
+      var chatA = document.getElementById('chatA'),
+        chatB = document.getElementById('chatB'),
+        inputA = document.getElementById('inputA'),
+        inputB = document.getElementById('inputB'),
+        btnA = document.getElementById('btnA'),
+        btnB = document.getElementById('btnB')
+        imgPath = 'images/';
+
+      /* FUNCTIONS */
+      /*
+      Function to add a message in the chat zone. It takes 3 parameters :
+      the chat id, the user name, and the text to display.
+      */
+      function addMsg(userName, txt){
+        var time = new Date();
+
+        if(txt != ''){  // Test if the text to display is not empty.
+          // Create the message container
+          msgContainer = user = document.createElement('div');
+          msgContainer.classList.add('media');
+          msgContainer.classList.add('msg');
+          // Create the avatar element
+          avatar = user = document.createElement('img');
+          avatar.classList.add('mr-2');
+          avatar.src = imgPath + userName + 'Avatar.png';
+          avatar.alt = 'avatar';
+          // Create the text container
+          msgBody = document.createElement('div');
+          msgBody.classList.add('media-body');
+          // Create the element to display the user name.
+          user = document.createElement('h6');
+          user.innerHTML = userName;
+          user.classList.add('mt-0');
+          // Create the element to display the message time.
+          msgTime = document.createElement('small');
+          msgTime.innerHTML = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+          // Create the element to display the message text.
+          msg = document.createElement('p');
+          msg.innerHTML = txt;
+          // Add the new elements to the document.
+          user.appendChild(msgTime);
+          msgBody.appendChild(user);
+          msgBody.appendChild(msg);
+          msgContainer.appendChild(avatar);
+          msgContainer.appendChild(msgBody);
+          chatA.appendChild(msgContainer);
+          chatB.appendChild(msgContainer.cloneNode(true));
+          // Move the chat scroll bar to the bottom.
+          chatA.scrollTop = chatA.scrollHeight;
+          chatB.scrollTop = chatB.scrollHeight;
+        }
+      }
+
+      /* EVENTS */
+      /*
+      Click event of the chat A button.
+      */
+      btnA.addEventListener('click', function(e){
+        addMsg('userA', inputA.value);
+        inputA.value = '';
+      });
+      /*
+      Click event of the chat B button.
+      */
+      btnB.addEventListener('click', function(e){
+        addMsg('userB', inputB.value);
+        inputB.value = '';
+      });
+      /*
+      'Enter' key press event.
+      */
+      document.addEventListener('keyup', function(e) {
+        // Test if the chat A is used.
+        if (e.key == 'Enter' && document.activeElement === inputA){
+          addMsg('userA', inputA.value);
+          inputA.value = '';
+        }
+        // Test if the chat B is used.
+        else if (e.key == 'Enter' && document.activeElement === inputB){
+          addMsg('userB', inputB.value);
+          inputB.value = '';
+        }
+      });
+    </script>
+  </body>
+</html>

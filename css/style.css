@@ -1,0 +1,20 @@
+/* GLOBAL STYLE */
+body { min-height: 90vh; margin: 0; padding: 0; color: #495057; background: url("../images/background.jpg") 0% 0% no-repeat; background-size: cover; }
+h1 { margin: 0; padding: 1%; color: #ffffff; font-size: 3em;font-family: 'Poiret One', cursive; text-shadow: 1px 1px 2px #212121; text-align: center; }
+#container { margin: 2%; }
+/* CHATS STYLE */
+#container .chatContainer { margin: 0; padding: 2%; }
+#container .chatContainer h2 { color: #ffffff; font-family: 'Poiret One', cursive; font-weight: 300; text-shadow: 1px 1px 2px #212121; }
+#container .chatContainer .chat { height: 60vh; background-color: rgba(255, 255, 255, 0.5); border: 1px solid #ced4da; border-radius: .25rem; overflow-y: auto; }
+/* CHAT MESSAGES STYLE */
+#container .chatContainer .chat .msg { padding: 10px; background-color: rgba(255, 255, 255, 0); }
+#container .chatContainer .chat .msg:hover { background-color: rgba(255, 255, 255, 0.2);}
+#container .chatContainer .chat .msg img { width: 32px; height: 32px; }
+#container .chatContainer .chat .msg .media-body h6 { margin: 0; font-weight: bold;}
+#container .chatContainer .chat .msg .media-body h6 small { margin-left: 8px; color: #777777; }
+#container .chatContainer .chat .msg .media-body p { margin: 0; padding: 0; }
+/* INPUT STYLE */
+#container .chatContainer .input-group { margin: 2% 0; padding: 0;}
+#container .chatContainer .input-group input { background-color: rgba(255, 255, 255, 0.5); }
+#container .chatContainer .input-group input:hover { background-color: rgba(255, 255, 255, 0.7); }
+#container .chatContainer .input-group input:focus { background-color: rgba(255, 255, 255, 1); }
